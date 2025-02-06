@@ -28,7 +28,7 @@ public class Base {
             myQuest.setBorder(new EmptyBorder(20, 0, 20, 0)); // Espacement autour du panel
             window.add(myQuest, BorderLayout.WEST);
 
-            JPanel imgPanel = new JPanel();
+            /*JPanel imgPanel = new JPanel();
             imgPanel.setLayout(new FlowLayout(FlowLayout.CENTER)); // Centrer l'image
             ImageIcon imageIcon = new ImageIcon("1.png");  // Remplace par le chemin de ton image
             Image image = imageIcon.getImage().getScaledInstance(200, 400, Image.SCALE_SMOOTH); // Redimensionner l'image
@@ -37,7 +37,7 @@ public class Base {
             imgPanel.add(imageLabel);
             imgPanel.setBorder(new EmptyBorder(20, 0, 20, 0)); // Espacement autour du panel
             window.add(imgPanel, BorderLayout.EAST); 
-            
+            */
     
 
             // Ajout des boutons en "escaliers"
