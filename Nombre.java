@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.border.EmptyBorder;
 
 public class Nombre {
     // Méthode pour ouvrir la fenêtre de conversion de nombres
@@ -8,73 +9,45 @@ public class Nombre {
         converterDialog.setSize(400, 300);
         converterDialog.setLocationRelativeTo(parentWindow);
 
+        JPanel userInput = new JPanel();
+        userInput.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JLabel UI = new JLabel("Veuillez entrer un nombre binaire :");
+        JTextField enter = new JTextField();
+        enter.setPreferredSize(new Dimension(100,50));
+        userInput.add(UI);
+        userInput.add(enter);
+        userInput.setBorder(new EmptyBorder(10,0,10,0));
+        converterDialog.add(userInput, BorderLayout.NORTH);
+
+        JPanel inputResult = new JPanel();
+        inputResult.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JLabel res = new JLabel("Résultat décimal");
+        JTextField outRes = new JTextField();
+        outRes.setPreferredSize(new Dimension(100,50));
+        inputResult.add(res);
+        inputResult.add(outRes);
+        inputResult.setBorder(new EmptyBorder(10,0,10,0));
+        outRes.setEditable(false);
+        converterDialog.add(inputResult, BorderLayout.SOUTH);
+
+
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(3, 2));
-
-        JLabel label1 = new JLabel("Entrez un nombre binaire :");
-        JTextField inputField = new JTextField();
-        JLabel resultLabel = new JLabel("Résultat (Décimal) :");
-        JTextField resultField = new JTextField();
-        resultField.setEditable(false);
-
+        panel.setLayout(new FlowLayout(FlowLayout.CENTER));
         JButton convertButton = new JButton("Convertir");
-
-        panel.add(label1);
-        panel.add(inputField);
-        panel.add(resultLabel);
-        panel.add(resultField);
-        panel.add(new JLabel());
         panel.add(convertButton);
+        converterDialog.add(panel, BorderLayout.CENTER);
 
         convertButton.addActionListener(e -> {
             try {
-                String binaryString = inputField.getText();
+                String binaryString = enter.getText();
                 int decimalResult = Integer.parseInt(binaryString, 2); // Conversion binaire → décimal
-                resultField.setText(String.valueOf(decimalResult));
+                outRes.setText(String.valueOf(decimalResult));
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(converterDialog, "Veuillez entrer un nombre binaire valide !");
             }
         });
 
-        converterDialog.add(panel);
-        converterDialog.setVisible(true);
-    }
-
-    // Méthode pour ouvrir la fenêtre de conversion Décimal → Binaire
-    public static void openDecimalToBinaryConverter(JFrame parentWindow) {
-        JDialog converterDialog = new JDialog(parentWindow, "Convertisseur Décimal → Binaire", true);
-        converterDialog.setSize(400, 300);
-        converterDialog.setLocationRelativeTo(parentWindow);
-
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(3, 2));
-
-        JLabel label1 = new JLabel("Entrez un nombre décimal :");
-        JTextField inputField = new JTextField();
-        JLabel resultLabel = new JLabel("Résultat (Binaire) :");
-        JTextField resultField = new JTextField();
-        resultField.setEditable(false);
-
-        JButton convertButton = new JButton("Convertir");
-
-        panel.add(label1);
-        panel.add(inputField);
-        panel.add(resultLabel);
-        panel.add(resultField);
-        panel.add(new JLabel());
-        panel.add(convertButton);
-
-        convertButton.addActionListener(e -> {
-            try {
-                int decimalValue = Integer.parseInt(inputField.getText());
-                String binaryResult = Integer.toBinaryString(decimalValue); // Conversion décimal → binaire
-                resultField.setText(binaryResult);
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(converterDialog, "Veuillez entrer un nombre décimal valide !");
-            }
-        });
-
-        converterDialog.add(panel);
+        
         converterDialog.setVisible(true);
     }
 }
