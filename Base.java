@@ -76,9 +76,15 @@ public class Base {
                 // Ouvrir la fenêtre de conversion des nombres
                 Nombre.openBinaryToDecimalConverter(window);
             });
-            butt2.addActionListener(e -> JOptionPane.showMessageDialog(window, "Convertisseur de couleurs ouvert !"));
-            butt3.addActionListener(e -> JOptionPane.showMessageDialog(window, "Convertisseur du taux de compression ouvert !"));
 
+            butt2.addActionListener(e -> {
+                ColorConvertor.OpenColorConverter(window);
+            });
+
+            butt3.addActionListener(e -> {
+                Compress.CompressConverterDialog(window);
+            });
+            
 
 
 

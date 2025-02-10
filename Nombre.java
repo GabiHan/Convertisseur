@@ -5,10 +5,11 @@ import javax.swing.border.EmptyBorder;
 public class Nombre {
     // Méthode pour ouvrir la fenêtre de conversion de nombres
     public static void openBinaryToDecimalConverter(JFrame parentWindow) {
-        JDialog converterDialog = new JDialog(parentWindow, "Convertisseur Binaire → Décimal", true);
-        converterDialog.setSize(400, 300);
-        converterDialog.setLocationRelativeTo(parentWindow);
+        JDialog NumconverterDialog = new JDialog(parentWindow, "Convertisseur Binaire → Décimal", true);
+        NumconverterDialog.setSize(400, 300);
+        NumconverterDialog.setLocationRelativeTo(parentWindow);
 
+    //Panel entré utilisateur 
         JPanel userInput = new JPanel();
         userInput.setLayout(new FlowLayout(FlowLayout.CENTER));
         JLabel UI = new JLabel("Veuillez entrer un nombre binaire :");
@@ -17,8 +18,9 @@ public class Nombre {
         userInput.add(UI);
         userInput.add(enter);
         userInput.setBorder(new EmptyBorder(10,0,10,0));
-        converterDialog.add(userInput, BorderLayout.NORTH);
-
+        NumconverterDialog.add(userInput, BorderLayout.NORTH);
+    
+    //Panel affichage des résultats
         JPanel inputResult = new JPanel();
         inputResult.setLayout(new FlowLayout(FlowLayout.CENTER));
         JLabel res = new JLabel("Résultat décimal");
@@ -28,14 +30,14 @@ public class Nombre {
         inputResult.add(outRes);
         inputResult.setBorder(new EmptyBorder(10,0,10,0));
         outRes.setEditable(false);
-        converterDialog.add(inputResult, BorderLayout.SOUTH);
+        NumconverterDialog.add(inputResult, BorderLayout.SOUTH);
 
-
+    
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout(FlowLayout.CENTER));
         JButton convertButton = new JButton("Convertir");
         panel.add(convertButton);
-        converterDialog.add(panel, BorderLayout.CENTER);
+        NumconverterDialog.add(panel, BorderLayout.CENTER);
 
         convertButton.addActionListener(e -> {
             try {
@@ -43,11 +45,11 @@ public class Nombre {
                 int decimalResult = Integer.parseInt(binaryString, 2); // Conversion binaire → décimal
                 outRes.setText(String.valueOf(decimalResult));
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(converterDialog, "Veuillez entrer un nombre binaire valide !");
+                JOptionPane.showMessageDialog(NumconverterDialog, "Veuillez entrer un nombre binaire valide !");
             }
         });
 
         
-        converterDialog.setVisible(true);
+        NumconverterDialog.setVisible(true);
     }
 }
