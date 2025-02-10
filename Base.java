@@ -54,7 +54,7 @@ public class Base {
 
             // Espacement entre les boutons
             gbc.gridy = 2;  // Décalage d'une ligne pour créer l'effet d'escalier
-            JButton butt2 = new JButton("Convertisseur de couleurs");
+            JButton butt2 = new JButton("Convertisseur de");
             butt2.setPreferredSize(new Dimension(300, 50)); // Redimensionner le bouton
             groupButt.add(butt2, gbc);
 
@@ -82,7 +82,7 @@ public class Base {
             });
 
             butt3.addActionListener(e -> {
-                Compress.CompressConverterDialog(window);
+                PixelConverter.showConverter(window);
             });
             
 
